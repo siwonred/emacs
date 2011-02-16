@@ -1403,15 +1403,15 @@ The values in the list should be symbols. Each symbol should either be
         fac
         ))))
 
-(defface mumamo-border-face-in
-  '((t (:inherit font-lock-preprocessor-face :bold t :italic t :underline t)))
-  "Face for marking borders."
-  :group 'mumamo-display)
+;(defface mumamo-border-face-in
+;  '((t (:inherit font-lock-preprocessor-face :bold nil :italic nil :underline nil)))
+;  "Face for marking borders."
+;  :group 'mumamo-display)
 
-(defface mumamo-border-face-out
-  '((t (:inherit font-lock-preprocessor-face :bold t :italic t :underline t)))
-  "Face for marking borders."
-  :group 'mumamo-display)
+;(defface mumamo-border-face-out
+;  '((t (:inherit font-lock-preprocessor-face :bold nil :italic nil :underline nil)))
+;  "Face for marking borders."
+;  :group 'mumamo-display)
 
 
 (defgroup mumamo-indentation nil
@@ -7073,7 +7073,7 @@ This list consists of four chunks at these positions:
 ;;                  (eq indentor-buffer mumamo-template-indent-buffer)
 ;;                  (string= chunk-str (overlay-get indentor 'indentor-chunk-string)))
 ;;       (when indentor
-;;         (when (buffer-live-p 
+;;         (when (buffer-live-p
 ;;     indentor
 ;;     ))
 (defun mumamo-indentor-valid (indentor chunk chunk-string)

@@ -96,16 +96,8 @@ macros (cf. 'insert-kbd-macro')."
 (global-defkey "<RET>" 'newline-and-indent)
 (global-defkey "C-x C-b" 'buffer-menu)
 
+
 (setq inhibit-splash-screen t)         ; hide welcome screen
-
-
-;; Mac Key Mode
-(require 'redo)
-(require 'mac-key-mode)
-(mac-key-mode 1)
-
-(global-defkey "A-C-z" 'redo)
-
 
 ;;;;;;;;;;;;
 ;; Indent ;;
@@ -223,8 +215,88 @@ macros (cf. 'insert-kbd-macro')."
 ;;;;;;;;;;
 (setq ring-bell-function 'ignore)
 
-;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;
+;; Auto Backup ;;
+;;;;;;;;;;;;;;;;;
+
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control nil)       ; don't use versioned backups
+
 (setq make-backup-files nil)
+(setq vc-make-backup-files nil)
+
+
+;;;;;;;;;;;;;
+;; Scratch ;;
+;;;;;;;;;;;;;
+
+;;; auto save and restore scratch buffer
+(defun save-scratch-data ()
+  (let ((str (progn
+               (set-buffer (get-buffer "*scratch*"))
+               (buffer-substring-no-properties
+                (point-min) (point-max))))
+        (file "~/.scratch"))
+    (if (get-file-buffer (expand-file-name file))
+        (setq buf (get-file-buffer (expand-file-name file)))
+      (setq buf (find-file-noselect file)))
+    (set-buffer buf)
+    (erase-buffer)
+    (insert str)
+    (save-buffer)
+    (kill-buffer buf)))
+
+(defadvice save-buffers-kill-emacs
+  (before save-scratch-buffer activate)
+  (save-scratch-data))
+
+(defun read-scratch-data ()
+  (let ((file "~/.scratch"))
+    (when (file-exists-p file)
+      (set-buffer (get-buffer "*scratch*"))
+      (erase-buffer)
+      (insert-file-contents file))
+    ))
+
+(read-scratch-data)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Recent open Files ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+(when (require 'recentf nil t)
+  (setq recentf-max-saved-items 2000)
+  (setq recentf-exclude '(".recentf"))
+  (setq recentf-auto-save-timer
+        (run-with-idle-timer 10 t 'recentf-save-list))
+  (recentf-mode 1))
+
+;;;;;;;;;;
+;; Redo ;;
+;;;;;;;;;;
+
+(require 'redo)
+
+
+;;;;;;;;;;;;;
+;; Mac Key ;;
+;;;;;;;;;;;;;
+
+(require 'mac-key-mode)
+(mac-key-mode 1)
+
+(global-defkey "A-C-z" 'redo)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq inhibit-splash-screen t)         ; hide welcome screen
 
 (scroll-bar-mode -1)
 

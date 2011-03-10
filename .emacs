@@ -184,11 +184,33 @@ macros (cf. 'insert-kbd-macro')."
 ; (toggle-truncate-lines nil)
 
 ;;;;;;;;;;;;;;;;;
-;; transparent ;;
+;; Transparent ;;
 ;;;;;;;;;;;;;;;;;
 
 (setq transparency-level 90)
 (set-frame-parameter nil 'alpha transparency-level)
+
+(defun djcb-opacity-modify (&optional dec)
+  "modify the transparency of the emacs frame; if DEC is t,
+    decrease the transparency, otherwise increase it in 10%-steps"
+  (let* ((alpha-or-nil (frame-parameter nil 'alpha)) ; nil before
+         setting
+         (oldalpha (if alpha-or-nil alpha-or-nil 100))
+         (newalpha (if dec (- oldalpha 10) (+ oldalpha 10))))
+    (when (and (>= newalpha frame-alpha-lower-limit) (<= newalpha
+                                                         100))
+      (modify-frame-parameters nil (list (cons 'alpha newalpha))))))
+
+;; C-8 will increase opacity (== decrease transparency)
+;; C-9 will decrease opacity (== increase transparency
+;; C-0 will returns the state to normal
+(global-set-key (kbd "C-8")
+                '(lambda()(interactive)(djcb-opacity-modify)))
+(global-set-key (kbd "C-9")
+                '(lambda()(interactive)(djcb-opacity-modify t)))
+(global-set-key (kbd "C-0") '(lambda()(interactive)
+                               (modify-frame-parameters nil `((alpha
+                                                               . 100)))))
 
 
 ;;;;;;;;;;
@@ -306,3 +328,41 @@ macros (cf. 'insert-kbd-macro')."
 (tool-bar-mode -1)                   ; toolbar 는 거의 안쓰니 꺼버린다
 
 ;; (server-start)
+
+
+;;;;;;;;;;;;;;;;
+;; Stop Debug ;;
+;;;;;;;;;;;;;;;;
+
+(setq debug-on-error nil)
+(setq-default debug-on-error nil)
+
+
+;;;;;;;;;;;
+;; Growl ;;
+;;;;;;;;;;;
+(defun growl (title message)
+  (start-process "growl" " growl"
+                 "/usr/local/bin/growlnotify"
+                 title
+                 "-a" "Emacs")
+  (process-send-string " growl" message)
+  (process-send-string " growl" "\n")
+  (process-send-eof " growl"))
+
+;;;;;;;;;
+;; Erc ;;
+;;;;;;;;;
+
+(defun my-erc-hook (match-type nick message)
+  "Shows a growl notification, when user's nick was mentioned. If the buffer is currently not visible, makes it sticky."
+  (and ; (eq match-type 'current-nick)
+       (not (erc-buffer-visible (current-buffer)))
+       (growl
+        (concat "ERC: name mentioned on: " (buffer-name (current-buffer)))
+        message
+        )))
+
+(add-hook 'erc-text-matched-hook 'my-erc-hook)
+
+;; (setq erc-insert-timestamp-function 'erc-insert-timestamp-left)

@@ -180,8 +180,14 @@ macros (cf. 'insert-kbd-macro')."
 
 (global-visual-line-mode 1) ; 1 for on, 0 for off.
 (global-linum-mode t)
-(setq-default truncate-lines nil) ; 화면을 벗어나는 긴 줄처리
+
+; (add-hook 'diff-mode-hook (lambda () (setq truncate-lines nil)))
 ; (toggle-truncate-lines nil)
+; (set-variable 'truncate-lines nil)
+(setq truncate-lines nil)
+(setq truncate-partial-width-windows nil)
+
+(global-set-key (kbd "<f7>") 'toggle-truncate-lines)
 
 ;;;;;;;;;;;;;;;;;
 ;; Transparent ;;

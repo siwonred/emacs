@@ -8,8 +8,10 @@ macros (cf. 'insert-kbd-macro')."
   `(global-set-key (read-kbd-macro,key),def))
 
 
-(setq vc-handled-backends nil)
+;; To stop vc
+; (setq vc-handled-backends nil)
 
+; (require 'git)Applications/
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Eshell Settings ;;;
@@ -145,6 +147,7 @@ macros (cf. 'insert-kbd-macro')."
 
 (setq shift-select-mode t)
 (setq mouse-drag-copy-region nil)
+(set-variable 'x-select-enable-clipboard t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete 1.3 ;;

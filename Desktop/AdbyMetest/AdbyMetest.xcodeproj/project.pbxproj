@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A75D85E71345FDAD001DA54F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75D85E61345FDAD001DA54F /* UIKit.framework */; };
+		A75D85E91345FDAD001DA54F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75D85E81345FDAD001DA54F /* Foundation.framework */; };
+		A75D85EB1345FDAD001DA54F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75D85EA1345FDAD001DA54F /* CoreGraphics.framework */; };
+		A75D85F11345FDAD001DA54F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A75D85EF1345FDAD001DA54F /* InfoPlist.strings */; };
+		A75D85F41345FDAD001DA54F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A75D85F31345FDAD001DA54F /* main.m */; };
+		A75D85F71345FDAD001DA54F /* AdbyMetestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A75D85F61345FDAD001DA54F /* AdbyMetestAppDelegate.m */; };
+		A75D85FA1345FDAD001DA54F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75D85F81345FDAD001DA54F /* MainWindow.xib */; };
+		A75D85FD1345FDAD001DA54F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75D85FC1345FDAD001DA54F /* RootViewController.m */; };
+		A75D86001345FDAE001DA54F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75D85FE1345FDAE001DA54F /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A75D85E21345FDAD001DA54F /* AdbyMetest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdbyMetest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75D85E61345FDAD001DA54F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A75D85E81345FDAD001DA54F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A75D85EA1345FDAD001DA54F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A75D85EE1345FDAD001DA54F /* AdbyMetest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AdbyMetest-Info.plist"; sourceTree = "<group>"; };
+		A75D85F01345FDAD001DA54F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A75D85F21345FDAD001DA54F /* AdbyMetest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdbyMetest-Prefix.pch"; sourceTree = "<group>"; };
+		A75D85F31345FDAD001DA54F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A75D85F51345FDAD001DA54F /* AdbyMetestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdbyMetestAppDelegate.h; sourceTree = "<group>"; };
+		A75D85F61345FDAD001DA54F /* AdbyMetestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdbyMetestAppDelegate.m; sourceTree = "<group>"; };
+		A75D85F91345FDAD001DA54F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A75D85FB1345FDAD001DA54F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A75D85FC1345FDAD001DA54F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A75D85FF1345FDAE001DA54F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A75D85DF1345FDAD001DA54F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A75D85E71345FDAD001DA54F /* UIKit.framework in Frameworks */,
+				A75D85E91345FDAD001DA54F /* Foundation.framework in Frameworks */,
+				A75D85EB1345FDAD001DA54F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A75D85D71345FDAD001DA54F = {
+			isa = PBXGroup;
+			children = (
+				A75D85EC1345FDAD001DA54F /* AdbyMetest */,
+				A75D85E51345FDAD001DA54F /* Frameworks */,
+				A75D85E31345FDAD001DA54F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A75D85E31345FDAD001DA54F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A75D85E21345FDAD001DA54F /* AdbyMetest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A75D85E51345FDAD001DA54F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A75D85E61345FDAD001DA54F /* UIKit.framework */,
+				A75D85E81345FDAD001DA54F /* Foundation.framework */,
+				A75D85EA1345FDAD001DA54F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A75D85EC1345FDAD001DA54F /* AdbyMetest */ = {
+			isa = PBXGroup;
+			children = (
+				A75D85F51345FDAD001DA54F /* AdbyMetestAppDelegate.h */,
+				A75D85F61345FDAD001DA54F /* AdbyMetestAppDelegate.m */,
+				A75D85F81345FDAD001DA54F /* MainWindow.xib */,
+				A75D85FB1345FDAD001DA54F /* RootViewController.h */,
+				A75D85FC1345FDAD001DA54F /* RootViewController.m */,
+				A75D85FE1345FDAE001DA54F /* RootViewController.xib */,
+				A75D85ED1345FDAD001DA54F /* Supporting Files */,
+			);
+			path = AdbyMetest;
+			sourceTree = "<group>";
+		};
+		A75D85ED1345FDAD001DA54F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A75D85EE1345FDAD001DA54F /* AdbyMetest-Info.plist */,
+				A75D85EF1345FDAD001DA54F /* InfoPlist.strings */,
+				A75D85F21345FDAD001DA54F /* AdbyMetest-Prefix.pch */,
+				A75D85F31345FDAD001DA54F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A75D85E11345FDAD001DA54F /* AdbyMetest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A75D86031345FDAE001DA54F /* Build configuration list for PBXNativeTarget "AdbyMetest" */;
+			buildPhases = (
+				A75D85DE1345FDAD001DA54F /* Sources */,
+				A75D85DF1345FDAD001DA54F /* Frameworks */,
+				A75D85E01345FDAD001DA54F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdbyMetest;
+			productName = AdbyMetest;
+			productReference = A75D85E21345FDAD001DA54F /* AdbyMetest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A75D85D91345FDAD001DA54F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = siwon;
+			};
+			buildConfigurationList = A75D85DC1345FDAD001DA54F /* Build configuration list for PBXProject "AdbyMetest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A75D85D71345FDAD001DA54F;
+			productRefGroup = A75D85E31345FDAD001DA54F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A75D85E11345FDAD001DA54F /* AdbyMetest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A75D85E01345FDAD001DA54F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A75D85F11345FDAD001DA54F /* InfoPlist.strings in Resources */,
+				A75D85FA1345FDAD001DA54F /* MainWindow.xib in Resources */,
+				A75D86001345FDAE001DA54F /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A75D85DE1345FDAD001DA54F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A75D85F41345FDAD001DA54F /* main.m in Sources */,
+				A75D85F71345FDAD001DA54F /* AdbyMetestAppDelegate.m in Sources */,
+				A75D85FD1345FDAD001DA54F /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A75D85EF1345FDAD001DA54F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A75D85F01345FDAD001DA54F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A75D85F81345FDAD001DA54F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A75D85F91345FDAD001DA54F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A75D85FE1345FDAE001DA54F /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A75D85FF1345FDAE001DA54F /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A75D86011345FDAE001DA54F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A75D86021345FDAE001DA54F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A75D86041345FDAE001DA54F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AdbyMetest/AdbyMetest-Prefix.pch";
+				INFOPLIST_FILE = "AdbyMetest/AdbyMetest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A75D86051345FDAE001DA54F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AdbyMetest/AdbyMetest-Prefix.pch";
+				INFOPLIST_FILE = "AdbyMetest/AdbyMetest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A75D85DC1345FDAD001DA54F /* Build configuration list for PBXProject "AdbyMetest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A75D86011345FDAE001DA54F /* Debug */,
+				A75D86021345FDAE001DA54F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A75D86031345FDAE001DA54F /* Build configuration list for PBXNativeTarget "AdbyMetest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A75D86041345FDAE001DA54F /* Debug */,
+				A75D86051345FDAE001DA54F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A75D85D91345FDAD001DA54F /* Project object */;
+}

@@ -1,3 +1,7 @@
+
+asdbaksjnd
+
+
 (add-to-list 'load-path "~/.emacs.d")
 
 ;;Test Key Binding
@@ -9,7 +13,7 @@ macros (cf. 'insert-kbd-macro')."
 
 
 ;; To stop vc
-(setq vc-handled-backends nil)
+; (setq vc-handled-backends nil)
 
 ; (require 'git)Applications/
 
@@ -17,10 +21,6 @@ macros (cf. 'insert-kbd-macro')."
 ;;; Eshell Settings ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(setq-default ansi-color-names-vector ["black" "red" "green" "yellow" "blue"
-                                       "magenta" "cyan" "white" ] )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Color-theme Settings ;;;
@@ -121,14 +121,6 @@ macros (cf. 'insert-kbd-macro')."
 )
 
 (add-hook 'php-mode-hook 'pear/php-mode-init)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Python mode setting ;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-hook 'python-mode-hook (lambda ()
-                              (setq python-indent 2)))
-
 
 ;;;;;;;;;;;;
 ;; NXHTML ;;
@@ -234,8 +226,8 @@ macros (cf. 'insert-kbd-macro')."
 ;; Font ;;
 ;;;;;;;;;;
 
-(set-default-font "Menlo-14")
-(set-frame-font "Menlo-14")
+(set-default-font "Menlo-13")
+(set-frame-font "Menlo-13")
 
 (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NANumGothicCoding" . "unicode-bmp")) ;
 (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp")) ;
@@ -270,7 +262,6 @@ macros (cf. 'insert-kbd-macro')."
 
 (setq make-backup-files nil)
 (setq vc-make-backup-files nil)
-(setq auto-save-default nil) ; stop creating those #auto-save# files
 
 
 ;;;;;;;;;;;;;
@@ -384,144 +375,3 @@ macros (cf. 'insert-kbd-macro')."
 (add-hook 'erc-text-matched-hook 'my-erc-hook)
 
 ;; (setq erc-insert-timestamp-function 'erc-insert-timestamp-left)
-
-
-
-
-;;;;;;;;;;;;;;;;;
-;; Scroll step ;;
-;;;;;;;;;;;;;;;;;
-
-(setq scroll-step 1)
-(setq scroll-conservatively 100000)
-
-
-;;;;;;;;;;
-;; Undo ;;
-;;;;;;;;;;
-
-(require 'redo)
-(global-set-key [(meta backspace)] 'undo)
-(global-set-key [(meta shift backspace)] 'redo)
-
-
-
-;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; System dependency ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defsubst is-win ()
-  (eq system-type 'windows-nt))
-(defsubst is-linux ()
-  (not (is-win)))
-(defsubst my-linux-switch (:linux linux :win win)
-  (cond ((is-linux) linux)
-        ((is-win) win)))
-(defconst console-p (eq (symbol-value 'window-system) nil)
-  "Are we running in a console (non-X) environment?")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Compilation Settings ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun my-run ()
-  "Run the output of compile"
-  (interactive)
-  (cond ((or (string= mode-name "C++/l") (string= mode-name "C/l"))
-         (if (= (shell-command compile-command "*compilation*") 0)
-             (let ((outbuffer
-                    (concat "* Result of "
-                            (file-name-sans-extension (file-name-nondirectory buffer-file-name))
-                            " *"))
-                   (run-command
-                    (concat (my-linux-switch :linux
-                                             "./"
-                                             :win
-                                             "")
-                            (file-name-sans-extension (file-name-nondirectory buffer-file-name))
-                            (my-linux-switch :linux
-                                             "&"
-                                             :win
-                                             ".exe&")))
-                    proc)
-               (setq proc
-                     (get-buffer-process (get-buffer-create outbuffer)))
-               (if proc
-                   (kill-process proc))
-               (sleep-for 0 60)
-               ;; (unless (get-buffer-window-list outbuffer)
-               ;;     (list
-               ;;      (message "test")
-               ;;      (display-buffer outbuffer t (window-buffer (split-window-vertically))))))
-               ;; ;; (keyboard-quit)
-               (shell-command run-command outbuffer)
-               (switch-to-buffer-other-window outbuffer))
-
-           (let ((compilation-buffer "*compilation*"))
-             (with-current-buffer compilation-buffer
-               (display-buffer compilation-buffer)
-               (compilation-mode))
-             (switch-to-buffer-other-window compilation-buffer)
-             (keyboard-quit))
-           ))
-
-        ((string= mode-name "Java/l")
-         (ant-call "runserver"))))
-					;'("clean" "install" "launch")))))
-
-
-(global-defkey "<C-f7>" 'compile)
-(global-defkey "<f7>" 'recompile)
-
-
-;(add-hook 'c-mode-common-hook (function cscope:hook))
-(add-hook 'c-mode-common-hook 'my-c-mode)
-
-
-(defun my-c-mode()
-  "My c mode"
-    (set (make-local-variable 'compile-command)
-         (when buffer-file-name
-           (concat (my-linux-switch :linux
-                                    (cond ((string= mode-name "C++/l") "g++")
-                                          ((string= mode-name "C/l") "gcc"))
-                                    :win
-				    (cond ((string= mode-name "C++/l") "g++")
-                                          ((string= mode-name "C/l") "gcc")))
-                   " -O2 -lm "
-		   (file-name-nondirectory buffer-file-name)
-		   " -o "
-		   (file-name-sans-extension (file-name-nondirectory buffer-file-name))
-		   (my-linux-switch :linux
-				    ""
-                                    :win
-				    ".exe"))))
-)
-
-
-(global-set-key [f5] 'my-run)
-
-
-;;;;;;;;;;;;;;
-
-(require 'haml-mode)
-
-(add-hook 'haml-mode-hook
-          '(lambda ()
-             (setq indent-tabs-mode nil)
-             (define-key haml-mode-map "\C-m" 'newline-and-indent)))
-
-;(add-hook 'haml-mode-hook
-;          (lambda ()
-;            ; (add-hook 'after-save-hook 'my-haml-save)
-;            ))
-
-(global-defkey "<f6>" 'my-haml-save)
-
-(defun my-haml-save ()
-  "My haml save"
-  (interactive)
-  (shell-command "ssh dev.adby.me 'cd exp/genie; python manage.py compile_haml'")
-)

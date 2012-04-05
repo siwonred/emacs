@@ -278,34 +278,34 @@ macros (cf. 'insert-kbd-macro')."
 ;;;;;;;;;;;;;
 
 ;;; auto save and restore scratch buffer
-(defun save-scratch-data ()
-  (let ((str (progn
-               (set-buffer (get-buffer "*scratch*"))
-               (buffer-substring-no-properties
-                (point-min) (point-max))))
-        (file "~/.scratch"))
-    (if (get-file-buffer (expand-file-name file))
-        (setq buf (get-file-buffer (expand-file-name file)))
-      (setq buf (find-file-noselect file)))
-    (set-buffer buf)
-    (erase-buffer)
-    (insert str)
-    (save-buffer)
-    (kill-buffer buf)))
+;; (defun save-scratch-data ()
+;;   (let ((str (progn
+;;                (set-buffer (get-buffer "*scratch*"))
+;;                (buffer-substring-no-properties
+;;                 (point-min) (point-max))))
+;;         (file "~/.scratch"))
+;;     (if (get-file-buffer (expand-file-name file))
+;;         (setq buf (get-file-buffer (expand-file-name file)))
+;;       (setq buf (find-file-noselect file)))
+;;     (set-buffer buf)
+;;     (erase-buffer)
+;;     (insert str)
+;;     (save-buffer)
+;;     (kill-buffer buf)))
 
-(defadvice save-buffers-kill-emacs
-  (before save-scratch-buffer activate)
-  (save-scratch-data))
+;; (defadvice save-buffers-kill-emacs
+;;   (before save-scratch-buffer activate)
+;;   (save-scratch-data))
 
-(defun read-scratch-data ()
-  (let ((file "~/.scratch"))
-    (when (file-exists-p file)
-      (set-buffer (get-buffer "*scratch*"))
-      (erase-buffer)
-      (insert-file-contents file))
-    ))
+;; (defun read-scratch-data ()
+;;   (let ((file "~/.scratch"))
+;;     (when (file-exists-p file)
+;;       (set-buffer (get-buffer "*scratch*"))
+;;       (erase-buffer)
+;;       (insert-file-contents file))
+;;     ))
 
-(read-scratch-data)
+;; (read-scratch-data)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Recent open Files ;;
@@ -523,5 +523,10 @@ macros (cf. 'insert-kbd-macro')."
 (defun my-haml-save ()
   "My haml save"
   (interactive)
-  (shell-command "ssh dev.adby.me 'cd exp/genie; python manage.py compile_haml'")
+  (shell-command "ssh red.adby.me 'cd exp/genie; python manage.py compile_haml'")
 )
+
+
+;;;;;;
+
+(define-key isearch-mode-map (kbd "A-v") 'isearch-yank-kill)
